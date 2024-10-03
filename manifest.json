@@ -1,0 +1,12 @@
+{
+    "name": "Test custom chrome extension",
+    "version": "1.0.0",
+    "description": "This is an extension to fill time entry in one unique place",
+    "manifest_version": 3,
+    "author": "Andraina Andriamiseza",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Time entry in one place!"
+    }
+
+}
