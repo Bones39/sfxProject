@@ -61,6 +61,18 @@ async function navigateSx() {
             await page.type('#login', process.env.LOGIN);
             await page.type('input[name="password"]', process.env.PASSWORD);
             await page.click('button[type="submit"]');
+            // wait for the page to be loaded
+            await page.waitForSelector('#NXLeftMenuscrollCt-outerCt');
+            // mettre active sur la classe du div
+            // x-component sx-module x-component-default sx-module-color26A69A sx-module-color26A69A-active
+            // await page.click('.sx-module-inner');  fonctionne mais prend le premier item
+            await page.click('#ext-comp-1031 > div.sx-module-inner');  //fonctionne !!!
+            await page.click('#ext-gen1789 > div.x-grid-cell-inner');  //fonctionne?
+            //
+            /* const tempsIcon = await page.evaluate(() => {document.querySelector('.sx-module-color26A69A').children[0]}); // presque
+            tempsIcon.$eval("sx-module-inner", el => el.OnClick()); */
+            // await page.click('.x-component sx-module x-component-default sx-module-color26A69A'); ne fonctionne pas
+            // il faut changer la classe de l'élément et mettre active dedans: class="x-component sx-module x-component-default sx-module-color26A69A sx-module-color26A69A-active"
         } catch (error) {
             console.log(error);
         }
